@@ -1,0 +1,323 @@
+<!doctype html>
+<html lang="de">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Ebubekir Ates – Spiele</title>
+<meta name="description" content="Ebubekir Ates: Arbeiten in Unreal Engine 5 und Unity, JayPlay und weitere veröffentlichte Apps.">
+<meta property="og:title" content="Ebubekir Ates – Spiele">
+<meta property="og:description" content="Arbeiten in Unreal Engine 5 und Unity, JayPlay und weitere veröffentlichte Apps.">
+<meta property="og:image" content="https://games.feurigebu.de/assets/hero.jpg">
+<link rel="icon" href="assets/apps/jayplay.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Anybody:wdth,wght@75..150,500..900&family=Schibsted+Grotesk:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root {
+  color-scheme: dark;
+  --sea: #0e1718;     /* Gewitterküste aus dem Horror Game Concept */
+  --deep: #152224;
+  --line: #273a3c;
+  --fog: #e2ebe7;
+  --muted: #94aaa7;
+  --lamp: #ffd68f;    /* Lampe am Strommast */
+  --display: "Anybody", system-ui, sans-serif;
+  --body: "Schibsted Grotesk", system-ui, sans-serif;
+  --gutter: clamp(16px, 5vw, 64px);
+  --measure: 62ch;
+}
+
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body {
+  margin: 0;
+  background: var(--sea);
+  color: var(--fog);
+  font: 400 1.0625rem/1.6 var(--body);
+  -webkit-font-smoothing: antialiased;
+}
+img { display: block; max-width: 100%; }
+a { color: inherit; }
+a:focus-visible, button:focus-visible { outline: 2px solid var(--lamp); outline-offset: 3px; border-radius: 4px; }
+p { margin: 0 0 1em; max-width: var(--measure); }
+h1, h2, h3 { font-family: var(--display); margin: 0; line-height: 1.02; font-weight: 800; }
+figure { margin: 0; }
+
+.wrap { padding-inline: var(--gutter); max-width: 1240px; margin-inline: auto; }
+
+/* ---------- Kopfzeile ---------- */
+.top {
+  position: absolute; inset: 0 0 auto; z-index: 2;
+  display: flex; align-items: center; justify-content: space-between; gap: 16px;
+  padding-block: 22px;
+}
+.top .name { font-weight: 600; text-decoration: none; }
+.social { display: flex; gap: 8px; }
+.social a {
+  display: inline-flex; align-items: center; gap: .5em;
+  padding: .5em .9em; border-radius: 999px;
+  background: rgb(14 23 24 / .55); border: 1px solid rgb(226 235 231 / .18);
+  backdrop-filter: blur(8px); -webkit-backdrop-filter: blur(8px);
+  font-weight: 600; font-size: .95rem; text-decoration: none;
+}
+.social a:hover { border-color: rgb(226 235 231 / .5); }
+.social svg { width: 20px; height: 20px; flex: none; }
+
+/* ---------- Hero ---------- */
+.hero {
+  position: relative;
+  min-height: min(100svh, 900px);
+  display: grid; align-items: end;
+  overflow: hidden; isolation: isolate;
+}
+.hero-media {
+  position: absolute; inset: 0; z-index: -2;
+  width: 100%; height: 100%; object-fit: cover; object-position: 45% 50%;
+}
+.hero::after {
+  content: ""; position: absolute; inset: 0; z-index: -1;
+  background:
+    linear-gradient(to top, var(--sea) 2%, rgb(14 23 24 / .72) 30%, rgb(14 23 24 / .05) 64%, rgb(14 23 24 / .35)),
+    linear-gradient(to right, rgb(14 23 24 / .5), transparent 55%);
+}
+.hero-inner { padding-block: 120px clamp(48px, 9vh, 96px); }
+.hero h1 {
+  font-size: clamp(2.8rem, 8vw, 7rem);
+  font-stretch: 140%; font-weight: 900;
+  letter-spacing: -.01em;
+}
+.hero .lead { margin-top: 1.4rem; font-size: clamp(1.08rem, 1.6vw, 1.3rem); max-width: 50ch; }
+.credit { color: var(--muted); font-size: .88rem; margin: 2rem 0 0; }
+
+/* ---------- Abschnitte ---------- */
+section.block { padding-block: clamp(72px, 11vw, 128px) 0; }
+.block h2 { font-size: clamp(2rem, 5vw, 3.9rem); font-stretch: 125%; margin-bottom: 1.2rem; max-width: 18ch; }
+.block .intro { font-size: 1.15rem; }
+.links { display: flex; flex-wrap: wrap; gap: 10px 22px; margin-top: 1.8rem; }
+.links a { color: var(--lamp); font-weight: 600; text-underline-offset: 4px; }
+
+/* ---------- Engine-Arbeiten ---------- */
+.reel { display: grid; gap: 28px 18px; grid-template-columns: repeat(6, 1fr); margin-top: 2.6rem; }
+.clip { grid-column: span 2; }
+.clip.wide { grid-column: span 3; }
+.clip .frame {
+  position: relative; display: block; width: 100%; padding: 0; border: 0;
+  aspect-ratio: 900 / 432; border-radius: 12px; overflow: hidden;
+  background: #000; color: inherit; cursor: pointer;
+}
+.clip .frame img { width: 100%; height: 100%; object-fit: cover; transition: transform .5s ease, filter .5s ease; }
+.clip button.frame:hover img { transform: scale(1.04); filter: brightness(1.1); }
+.clip .play {
+  position: absolute; left: 12px; bottom: 12px;
+  display: inline-flex; align-items: center; gap: .5em;
+  padding: .45em .85em .45em .7em; border-radius: 999px;
+  background: rgb(14 23 24 / .78); color: var(--fog);
+  font: 600 .85rem/1 var(--body);
+}
+.clip .play::before { content: ""; border-left: 9px solid var(--lamp); border-block: 6px solid transparent; }
+.clip iframe { position: absolute; inset: 0; width: 100%; height: 100%; border: 0; }
+.clip figcaption { padding-top: .8rem; }
+.clip figcaption b { display: block; font-weight: 600; }
+.clip figcaption span { display: block; color: var(--muted); font-size: .95rem; }
+.clip .engine { color: var(--lamp); font-size: .9rem; font-weight: 600; }
+
+/* ---------- JayPlay ---------- */
+.jp { display: grid; grid-template-columns: 1fr 1.15fr; gap: clamp(32px, 6vw, 88px); align-items: center; }
+.facts { display: flex; flex-wrap: wrap; gap: 8px 32px; margin: 1.6rem 0 0; padding: 0; list-style: none; }
+.facts b { font: 800 2rem/1 var(--display); font-stretch: 120%; color: var(--lamp); margin-right: .3em; }
+.facts li { color: var(--muted); }
+.games { display: grid; grid-template-columns: repeat(5, 1fr); gap: 10px; list-style: none; padding: 0; margin: 0; }
+.games img { width: 100%; aspect-ratio: 600 / 1066; object-fit: cover; border-radius: 10px; background: var(--deep); }
+
+/* ---------- Apps ---------- */
+.apps { list-style: none; padding: 0; margin: 2.2rem 0 0; display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: 12px; }
+.apps a { display: flex; gap: 16px; align-items: center; padding: 14px; border-radius: 18px; text-decoration: none; background: var(--deep); border: 1px solid transparent; }
+.apps a:hover { border-color: var(--line); }
+.apps img { width: 60px; height: 60px; border-radius: 14px; flex: none; }
+.apps b { display: block; font-weight: 600; }
+.apps span { display: block; color: var(--muted); font-size: .92rem; line-height: 1.35; }
+
+/* ---------- Was ich übernehmen kann ---------- */
+.roles { list-style: none; padding: 0; margin: 2.2rem 0 0; display: grid; grid-template-columns: repeat(2, 1fr); gap: 0 clamp(32px, 5vw, 72px); }
+.roles li { padding: 1.3rem 0; border-top: 1px solid var(--line); }
+.roles h3 { font-size: 1.25rem; font-stretch: 112%; margin-bottom: .45rem; }
+.roles p { margin: 0; color: var(--muted); }
+
+footer { margin-top: clamp(72px, 11vw, 128px); border-top: 1px solid var(--line); padding-block: 1.6rem 2.4rem; color: var(--muted); font-size: .9rem; }
+
+/* ---------- Responsive ---------- */
+@media (max-width: 980px) {
+  .reel { grid-template-columns: 1fr 1fr; }
+  .clip, .clip.wide { grid-column: span 1; }
+  .jp { grid-template-columns: 1fr; }
+}
+@media (max-width: 640px) {
+  .reel, .roles { grid-template-columns: 1fr; }
+  .hero h1 { font-stretch: 115%; }
+  .social span { display: none; }
+  .social a { padding: .55em; }
+  .games { grid-template-columns: repeat(5, 40%); overflow-x: auto; scroll-snap-type: x mandatory; padding-bottom: 6px; }
+  .games li { scroll-snap-align: start; }
+}
+@media (max-width: 760px) { .hero-media { object-position: 50% 50%; } }
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  .clip .frame img { transition: none; }
+}
+</style>
+</head>
+<body>
+
+<header class="hero">
+  <video class="hero-media" autoplay muted loop playsinline preload="auto" poster="assets/hero.jpg" aria-hidden="true">
+    <source src="assets/hero-mobile.mp4" type="video/mp4" media="(max-width: 760px)">
+    <source src="assets/hero.mp4" type="video/mp4">
+  </video>
+
+  <nav class="top wrap" aria-label="Profile">
+    <a class="name" href="#">Ebubekir Ates</a>
+    <div class="social">
+      <a href="https://www.youtube.com/@xXxebubekirxXx" aria-label="YouTube">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><rect x="1" y="4.5" width="22" height="15" rx="4.5" fill="#ff0033"/><path d="M10 8.8v6.4l5.5-3.2z" fill="#fff"/></svg>
+        <span>YouTube</span>
+      </a>
+      <a href="https://github.com/Honigeintopf" aria-label="GitHub">
+        <svg viewBox="0 0 16 16" aria-hidden="true"><path fill="currentColor" d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.01 8.01 0 0 0 16 8c0-4.42-3.58-8-8-8z"/></svg>
+        <span>GitHub</span>
+      </a>
+    </div>
+  </nav>
+
+  <div class="wrap hero-inner">
+    <h1>Hi, ich bin Ebu.</h1>
+    <p class="lead">Ich entwickle seit über sechs Jahren Software und baue Spiele: in Unreal Engine 5 und Unity und als Apps, die im Store sind. Hier ist ein Überblick über das, was ich bisher gemacht habe.</p>
+    <p class="credit">Im Hintergrund: Horror Game Concept, Unreal Engine 5, 2023</p>
+  </div>
+</header>
+
+<main>
+
+<section class="block wrap" id="engines">
+  <h2>Unreal Engine 5 und Unity</h2>
+  <p class="intro">Umgebungen, Licht, Wetter und Horror-Prototypen aus der Ich-Perspektive.</p>
+
+  <div class="reel">
+    <figure class="clip wide">
+      <button class="frame" data-id="uTADSgsvDp8" aria-label="Video abspielen: Is this all just a dream?"><img src="assets/video/uTADSgsvDp8.jpg" alt="" loading="lazy"><span class="play">1:21</span></button>
+      <figcaption><span class="engine">Unreal Engine 5, 2026</span><b>Is this all just a dream?</b><span>Erzählte Sequenz vom Schlafzimmer aufs offene Meer.</span></figcaption>
+    </figure>
+    <figure class="clip wide">
+      <button class="frame" data-id="p0Y-7TdCcpU" aria-label="Video abspielen: Horror Game Concept"><img src="assets/video/p0Y-7TdCcpU.jpg" alt="" loading="lazy"><span class="play">0:52</span></button>
+      <figcaption><span class="engine">Unreal Engine 5, 2023</span><b>Horror Game Concept</b><span>Wohnung, Küste und Strommasten im Wasser.</span></figcaption>
+    </figure>
+    <figure class="clip">
+      <button class="frame" data-id="o8RcYaNPw38" aria-label="Video abspielen: Horror-Spiel in Entwicklung"><img src="assets/video/o8RcYaNPw38.jpg" alt="" loading="lazy"><span class="play">1:16</span></button>
+      <figcaption><span class="engine">Unreal Engine 5, 2022</span><b>Horror-Spiel, in Entwicklung</b><span>Psychologischer Horror in holzvertäfelten Fluren.</span></figcaption>
+    </figure>
+    <figure class="clip">
+      <button class="frame" data-id="xZ3VY3EG57k" aria-label="Video abspielen: Prototyp in Unity HDRP"><img src="assets/video/xZ3VY3EG57k.jpg" alt="" loading="lazy"><span class="play">1:11</span></button>
+      <figcaption><span class="engine">Unity HDRP, 2021</span><b>Prototyp: Stadt bei Nacht</b><span>Spielbarer Prototyp mit der High Definition Render Pipeline.</span></figcaption>
+    </figure>
+    <figure class="clip">
+      <button class="frame" data-id="Ye4YDdWMxLk" aria-label="Video abspielen: Testlauf des Horror-Spiels"><img src="assets/video/Ye4YDdWMxLk.jpg" alt="" loading="lazy"><span class="play">0:43</span></button>
+      <figcaption><span class="engine">Unreal Engine 5, 2022</span><b>Horror-Spiel, Testlauf</b><span>Ein weiterer Abschnitt desselben Spiels.</span></figcaption>
+    </figure>
+    <figure class="clip">
+      <button class="frame" data-id="R54h8G0KNr4" aria-label="Video abspielen: Teaser Dreams"><img src="assets/video/R54h8G0KNr4.jpg" alt="" loading="lazy"><span class="play">0:30</span></button>
+      <figcaption><span class="engine">2023</span><b>Dreams</b><span>Teaser für ein Horror-Spiel.</span></figcaption>
+    </figure>
+    <figure class="clip">
+      <button class="frame" data-id="7-u-djujGbA" aria-label="Video abspielen: Gewitter in Unreal Engine 5"><img src="assets/video/7-u-djujGbA.jpg" alt="" loading="lazy"><span class="play">0:21</span></button>
+      <figcaption><span class="engine">Unreal Engine 5, 2022</span><b>Gewitter</b><span>Nacht, Blitze und Wind im Wald.</span></figcaption>
+    </figure>
+    <figure class="clip">
+      <button class="frame" data-id="SZMq01v8wwA" aria-label="Video abspielen: Wald in Unreal Engine 5"><img src="assets/video/SZMq01v8wwA.jpg" alt="" loading="lazy"><span class="play">0:50</span></button>
+      <figcaption><span class="engine">Unreal Engine 5, 2022</span><b>Wald</b><span>Vegetation, Wind und Licht.</span></figcaption>
+    </figure>
+  </div>
+  <div class="links"><a href="https://www.youtube.com/@xXxebubekirxXx">Alle Videos auf YouTube</a></div>
+</section>
+
+<section class="block wrap" id="jayplay">
+  <div class="jp">
+    <div>
+      <h2>JayPlay</h2>
+      <p class="intro">Eine App mit zehn Party-Spielen. Ich habe sie als Lead-Entwickler übernommen und in rund zwei Monaten neu gebaut, von Flutter auf React Native, mit eigenem Echtzeit-Backend in Go. Spiellogik, Multiplayer, Menüs, Käufe und Updates kommen von mir.</p>
+      <ul class="facts">
+        <li><b>4,6</b>Sterne im App Store</li>
+        <li><b>622</b>Bewertungen</li>
+        <li><b>4</b>Sprachen</li>
+      </ul>
+      <div class="links">
+        <a href="https://apps.apple.com/de/app/jayplay/id6800434414">App Store</a>
+        <a href="https://play.google.com/store/apps/details?id=app.jayplay">Google Play</a>
+      </div>
+    </div>
+    <ul class="games" aria-label="Spiele in JayPlay">
+      <li><img src="assets/games/risk-the-bite.webp" alt="Risk the Bite" loading="lazy"></li>
+      <li><img src="assets/games/hot-hand.webp" alt="Hot Hand" loading="lazy"></li>
+      <li><img src="assets/games/mind-match.webp" alt="Mind Match" loading="lazy"></li>
+      <li><img src="assets/games/lucky-catch.webp" alt="Lucky Catch" loading="lazy"></li>
+      <li><img src="assets/games/brush-rush.webp" alt="Brush Rush" loading="lazy"></li>
+    </ul>
+  </div>
+</section>
+
+<section class="block wrap" id="apps">
+  <h2>Weitere Apps</h2>
+  <p class="intro">Selbst entwickelt und im App Store veröffentlicht.</p>
+  <ul class="apps">
+    <li><a href="https://apps.apple.com/de/app/nur-gebetszeiten-qibla/id6820068223"><img src="assets/apps/nur.png" alt=""><div><b>Nur</b><span>Habit-Tracker mit Kätzchen als Begleiter, Streaks und Fortschritt</span></div></a></li>
+    <li><a href="https://apps.apple.com/de/app/bahnsinn-abfahrt-versp%C3%A4tung/id6811952858"><img src="assets/apps/bahnsinn.png" alt=""><div><b>Bahnsinn</b><span>Community für Bahnreisende mit Live-Daten, XP und Abzeichen</span></div></a></li>
+    <li><a href="https://apps.apple.com/de/app/looksharp-outfit-finder/id6770443041"><img src="assets/apps/looksharp.png" alt=""><div><b>Looksharp</b><span>Outfit aus einem Screenshot erkennen</span></div></a></li>
+    <li><a href="https://apps.apple.com/de/app/coinly-kassenbon-scanner/id6813010418"><img src="assets/apps/coinly.png" alt=""><div><b>Coinly</b><span>Kassenbons scannen, daraus die Einkaufsliste</span></div></a></li>
+    <li><a href="https://apps.apple.com/de/app/d%C3%B6nerwetter-n%C3%A4chster-d%C3%B6ner/id6815627103"><img src="assets/apps/doenerwetter.png" alt=""><div><b>Dönerwetter</b><span>Der nächste Döner, mit Maskottchen, das den Weg zeigt</span></div></a></li>
+  </ul>
+</section>
+
+<section class="block wrap" id="rollen">
+  <h2>Was ich übernehmen kann</h2>
+  <ul class="roles">
+    <li><h3>Spiellogik</h3><p>Regeln, Zustände und Abläufe, so gebaut, dass sich Level und Inhalte später ergänzen lassen.</p></li>
+    <li><h3>Menüs und UI</h3><p>Hauptmenü, Einstellungen, Pause und Ergebnis-Screens.</p></li>
+    <li><h3>Mehrere Sprachen</h3><p>Texte von Anfang an übersetzbar angelegt, Deutsch und Englisch ohne Umbau.</p></li>
+    <li><h3>Builds und Release</h3><p>Builds, Store-Seiten und Updates nach dem Launch, für PC und Handy.</p></li>
+  </ul>
+</section>
+
+</main>
+
+<footer class="wrap">© 2026 Ebubekir Ates</footer>
+
+<script>
+(function () {
+  var v = document.querySelector('.hero-media');
+  var calm = matchMedia('(prefers-reduced-motion: reduce)').matches ||
+             (navigator.connection && navigator.connection.saveData);
+  if (calm) {
+    v.removeAttribute('autoplay');
+    v.querySelectorAll('source').forEach(function (s) { s.remove(); });
+    v.load();
+  } else if ('IntersectionObserver' in window) {
+    new IntersectionObserver(function (e) {
+      if (e[0].isIntersecting) { v.play().catch(function () {}); } else { v.pause(); }
+    }).observe(v);
+  }
+
+  document.querySelectorAll('.clip .frame').forEach(function (btn) {
+    btn.addEventListener('click', function () {
+      var f = document.createElement('iframe');
+      f.src = 'https://www.youtube-nocookie.com/embed/' + btn.dataset.id + '?autoplay=1&rel=0';
+      f.title = btn.getAttribute('aria-label').replace('Video abspielen: ', '');
+      f.allow = 'autoplay; encrypted-media; picture-in-picture; fullscreen';
+      f.allowFullscreen = true;
+      var holder = document.createElement('div');
+      holder.className = 'frame';
+      holder.appendChild(f);
+      btn.replaceWith(holder);
+    }, { once: true });
+  });
+})();
+</script>
+</body>
+</html>
