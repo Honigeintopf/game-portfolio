@@ -5,10 +5,21 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Ebubekir Ates – Spiele</title>
 <meta name="description" content="Ebubekir Ates: Arbeiten in Unreal Engine 5 und Unity, JayPlay und weitere veröffentlichte Apps.">
+<link rel="canonical" href="https://games.feurigebu.de/">
+<meta property="og:type" content="website">
+<meta property="og:locale" content="de_DE">
+<meta property="og:url" content="https://games.feurigebu.de/">
 <meta property="og:title" content="Ebubekir Ates – Spiele">
 <meta property="og:description" content="Arbeiten in Unreal Engine 5 und Unity, JayPlay und weitere veröffentlichte Apps.">
-<meta property="og:image" content="https://games.feurigebu.de/assets/hero.jpg">
-<link rel="icon" href="assets/apps/jayplay.png">
+<meta property="og:image" content="https://games.feurigebu.de/assets/og.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="Ebubekir Ates: Unreal Engine 5, Unity und Spiele, die im Store sind">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://games.feurigebu.de/assets/og.jpg">
+<meta name="theme-color" content="#0e1718">
+<link rel="icon" href="assets/apps/jayplay.webp">
+<link rel="preload" as="image" href="assets/hero.jpg" fetchpriority="high">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Anybody:wdth,wght@75..150,500..900&family=Schibsted+Grotesk:wght@400;500;600&display=swap" rel="stylesheet">
@@ -126,6 +137,12 @@ section.block { padding-block: clamp(72px, 11vw, 128px) 0; }
 .facts { display: flex; flex-wrap: wrap; gap: 8px 32px; margin: 1.6rem 0 0; padding: 0; list-style: none; }
 .facts b { font: 800 2rem/1 var(--display); font-stretch: 120%; color: var(--lamp); margin-right: .3em; }
 .facts li { color: var(--muted); }
+.creators { list-style: none; padding: 0; margin: 1.4rem 0 0; display: grid; gap: 8px; }
+.creators li { display: flex; flex-wrap: wrap; align-items: baseline; gap: 4px 14px; padding: .7rem 0; border-top: 1px solid var(--line); }
+.creators li:last-child { border-bottom: 1px solid var(--line); }
+.creators b { font-weight: 600; min-width: 3.5em; }
+.creators span { color: var(--muted); flex: 1; }
+.creators a { color: var(--lamp); font-weight: 600; font-size: .95rem; text-underline-offset: 4px; }
 .games { display: grid; grid-template-columns: repeat(5, 1fr); gap: 10px; list-style: none; padding: 0; margin: 0; }
 .games img { width: 100%; aspect-ratio: 600 / 1066; object-fit: cover; border-radius: 10px; background: var(--deep); }
 
@@ -169,10 +186,7 @@ footer { margin-top: clamp(72px, 11vw, 128px); border-top: 1px solid var(--line)
 <body>
 
 <header class="hero">
-  <video class="hero-media" autoplay muted loop playsinline preload="auto" poster="assets/hero.jpg" aria-hidden="true">
-    <source src="assets/hero-mobile.mp4" type="video/mp4" media="(max-width: 760px)">
-    <source src="assets/hero.mp4" type="video/mp4">
-  </video>
+  <video class="hero-media" muted loop playsinline preload="none" poster="assets/hero.jpg" aria-hidden="true"></video>
 
   <nav class="top wrap" aria-label="Profile">
     <a class="name" href="#">Ebubekir Ates</a>
@@ -203,35 +217,35 @@ footer { margin-top: clamp(72px, 11vw, 128px); border-top: 1px solid var(--line)
 
   <div class="reel">
     <figure class="clip wide">
-      <button class="frame" data-id="uTADSgsvDp8" aria-label="Video abspielen: Is this all just a dream?"><img src="assets/video/uTADSgsvDp8.jpg" alt="" loading="lazy"><span class="play">1:21</span></button>
+      <button class="frame" data-id="uTADSgsvDp8" aria-label="Video abspielen: Is this all just a dream?"><img src="assets/video/uTADSgsvDp8.webp" alt="" loading="lazy"><span class="play">1:21</span></button>
       <figcaption><span class="engine">Unreal Engine 5, 2026</span><b>Is this all just a dream?</b><span>Erzählte Sequenz vom Schlafzimmer aufs offene Meer.</span></figcaption>
     </figure>
     <figure class="clip wide">
-      <button class="frame" data-id="p0Y-7TdCcpU" aria-label="Video abspielen: Horror Game Concept"><img src="assets/video/p0Y-7TdCcpU.jpg" alt="" loading="lazy"><span class="play">0:52</span></button>
+      <button class="frame" data-id="p0Y-7TdCcpU" aria-label="Video abspielen: Horror Game Concept"><img src="assets/video/p0Y-7TdCcpU.webp" alt="" loading="lazy"><span class="play">0:52</span></button>
       <figcaption><span class="engine">Unreal Engine 5, 2023</span><b>Horror Game Concept</b><span>Wohnung, Küste und Strommasten im Wasser.</span></figcaption>
     </figure>
     <figure class="clip">
-      <button class="frame" data-id="o8RcYaNPw38" aria-label="Video abspielen: Horror-Spiel in Entwicklung"><img src="assets/video/o8RcYaNPw38.jpg" alt="" loading="lazy"><span class="play">1:16</span></button>
+      <button class="frame" data-id="o8RcYaNPw38" aria-label="Video abspielen: Horror-Spiel in Entwicklung"><img src="assets/video/o8RcYaNPw38.webp" alt="" loading="lazy"><span class="play">1:16</span></button>
       <figcaption><span class="engine">Unreal Engine 5, 2022</span><b>Horror-Spiel, in Entwicklung</b><span>Psychologischer Horror in holzvertäfelten Fluren.</span></figcaption>
     </figure>
     <figure class="clip">
-      <button class="frame" data-id="xZ3VY3EG57k" aria-label="Video abspielen: Prototyp in Unity HDRP"><img src="assets/video/xZ3VY3EG57k.jpg" alt="" loading="lazy"><span class="play">1:11</span></button>
+      <button class="frame" data-id="xZ3VY3EG57k" aria-label="Video abspielen: Prototyp in Unity HDRP"><img src="assets/video/xZ3VY3EG57k.webp" alt="" loading="lazy"><span class="play">1:11</span></button>
       <figcaption><span class="engine">Unity HDRP, 2021</span><b>Prototyp: Stadt bei Nacht</b><span>Spielbarer Prototyp mit der High Definition Render Pipeline.</span></figcaption>
     </figure>
     <figure class="clip">
-      <button class="frame" data-id="Ye4YDdWMxLk" aria-label="Video abspielen: Testlauf des Horror-Spiels"><img src="assets/video/Ye4YDdWMxLk.jpg" alt="" loading="lazy"><span class="play">0:43</span></button>
+      <button class="frame" data-id="Ye4YDdWMxLk" aria-label="Video abspielen: Testlauf des Horror-Spiels"><img src="assets/video/Ye4YDdWMxLk.webp" alt="" loading="lazy"><span class="play">0:43</span></button>
       <figcaption><span class="engine">Unreal Engine 5, 2022</span><b>Horror-Spiel, Testlauf</b><span>Ein weiterer Abschnitt desselben Spiels.</span></figcaption>
     </figure>
     <figure class="clip">
-      <button class="frame" data-id="R54h8G0KNr4" aria-label="Video abspielen: Teaser Dreams"><img src="assets/video/R54h8G0KNr4.jpg" alt="" loading="lazy"><span class="play">0:30</span></button>
+      <button class="frame" data-id="R54h8G0KNr4" aria-label="Video abspielen: Teaser Dreams"><img src="assets/video/R54h8G0KNr4.webp" alt="" loading="lazy"><span class="play">0:30</span></button>
       <figcaption><span class="engine">2023</span><b>Dreams</b><span>Teaser für ein Horror-Spiel.</span></figcaption>
     </figure>
     <figure class="clip">
-      <button class="frame" data-id="7-u-djujGbA" aria-label="Video abspielen: Gewitter in Unreal Engine 5"><img src="assets/video/7-u-djujGbA.jpg" alt="" loading="lazy"><span class="play">0:21</span></button>
+      <button class="frame" data-id="7-u-djujGbA" aria-label="Video abspielen: Gewitter in Unreal Engine 5"><img src="assets/video/7-u-djujGbA.webp" alt="" loading="lazy"><span class="play">0:21</span></button>
       <figcaption><span class="engine">Unreal Engine 5, 2022</span><b>Gewitter</b><span>Nacht, Blitze und Wind im Wald.</span></figcaption>
     </figure>
     <figure class="clip">
-      <button class="frame" data-id="SZMq01v8wwA" aria-label="Video abspielen: Wald in Unreal Engine 5"><img src="assets/video/SZMq01v8wwA.jpg" alt="" loading="lazy"><span class="play">0:50</span></button>
+      <button class="frame" data-id="SZMq01v8wwA" aria-label="Video abspielen: Wald in Unreal Engine 5"><img src="assets/video/SZMq01v8wwA.webp" alt="" loading="lazy"><span class="play">0:50</span></button>
       <figcaption><span class="engine">Unreal Engine 5, 2022</span><b>Wald</b><span>Vegetation, Wind und Licht.</span></figcaption>
     </figure>
   </div>
@@ -242,7 +256,11 @@ footer { margin-top: clamp(72px, 11vw, 128px); border-top: 1px solid var(--line)
   <div class="jp">
     <div>
       <h2>JayPlay</h2>
-      <p class="intro">Eine App mit zehn Party-Spielen. Ich habe sie als Lead-Entwickler übernommen und in rund zwei Monaten neu gebaut, von Flutter auf React Native, mit eigenem Echtzeit-Backend in Go. Spiellogik, Multiplayer, Menüs, Käufe und Updates kommen von mir.</p>
+      <p class="intro">Eine App mit zehn Party-Spielen, entwickelt zusammen mit den Creatorn Jana und Yakiv. Ich habe sie als Lead-Entwickler übernommen und in rund zwei Monaten neu gebaut, von Flutter auf React Native, mit eigenem Echtzeit-Backend in Go. Spiellogik, Multiplayer, Menüs, Käufe und Updates kommen von mir.</p>
+      <ul class="creators">
+        <li><b>Jana</b><span>über 400.000 TikTok-Follower</span><a href="https://www.tiktok.com/@janaajolie">TikTok</a><a href="https://www.instagram.com/janaajolie/">Instagram</a></li>
+        <li><b>Yakiv</b><span>über 300.000 TikTok-Follower</span><a href="https://www.tiktok.com/@yakiv.gubariev">TikTok</a><a href="https://www.instagram.com/yakiv.gubariev/">Instagram</a></li>
+      </ul>
       <ul class="facts">
         <li><b>4,6</b>Sterne im App Store</li>
         <li><b>622</b>Bewertungen</li>
@@ -267,11 +285,11 @@ footer { margin-top: clamp(72px, 11vw, 128px); border-top: 1px solid var(--line)
   <h2>Weitere Apps</h2>
   <p class="intro">Selbst entwickelt und im App Store veröffentlicht.</p>
   <ul class="apps">
-    <li><a href="https://apps.apple.com/de/app/nur-gebetszeiten-qibla/id6820068223"><img src="assets/apps/nur.png" alt=""><div><b>Nur</b><span>Habit-Tracker mit Kätzchen als Begleiter, Streaks und Fortschritt</span></div></a></li>
-    <li><a href="https://apps.apple.com/de/app/bahnsinn-abfahrt-versp%C3%A4tung/id6811952858"><img src="assets/apps/bahnsinn.png" alt=""><div><b>Bahnsinn</b><span>Community für Bahnreisende mit Live-Daten, XP und Abzeichen</span></div></a></li>
-    <li><a href="https://apps.apple.com/de/app/looksharp-outfit-finder/id6770443041"><img src="assets/apps/looksharp.png" alt=""><div><b>Looksharp</b><span>Outfit aus einem Screenshot erkennen</span></div></a></li>
-    <li><a href="https://apps.apple.com/de/app/coinly-kassenbon-scanner/id6813010418"><img src="assets/apps/coinly.png" alt=""><div><b>Coinly</b><span>Kassenbons scannen, daraus die Einkaufsliste</span></div></a></li>
-    <li><a href="https://apps.apple.com/de/app/d%C3%B6nerwetter-n%C3%A4chster-d%C3%B6ner/id6815627103"><img src="assets/apps/doenerwetter.png" alt=""><div><b>Dönerwetter</b><span>Der nächste Döner, mit Maskottchen, das den Weg zeigt</span></div></a></li>
+    <li><a href="https://apps.apple.com/de/app/nur-gebetszeiten-qibla/id6820068223"><img src="assets/apps/nur.webp" alt=""><div><b>Nur</b><span>Habit-Tracker mit Kätzchen als Begleiter, Streaks und Fortschritt</span></div></a></li>
+    <li><a href="https://apps.apple.com/de/app/bahnsinn-abfahrt-versp%C3%A4tung/id6811952858"><img src="assets/apps/bahnsinn.webp" alt=""><div><b>Bahnsinn</b><span>Community für Bahnreisende mit Live-Daten, XP und Abzeichen</span></div></a></li>
+    <li><a href="https://apps.apple.com/de/app/looksharp-outfit-finder/id6770443041"><img src="assets/apps/looksharp.webp" alt=""><div><b>Looksharp</b><span>Outfit aus einem Screenshot erkennen</span></div></a></li>
+    <li><a href="https://apps.apple.com/de/app/coinly-kassenbon-scanner/id6813010418"><img src="assets/apps/coinly.webp" alt=""><div><b>Coinly</b><span>Kassenbons scannen, daraus die Einkaufsliste</span></div></a></li>
+    <li><a href="https://apps.apple.com/de/app/d%C3%B6nerwetter-n%C3%A4chster-d%C3%B6ner/id6815627103"><img src="assets/apps/doenerwetter.webp" alt=""><div><b>Dönerwetter</b><span>Der nächste Döner, mit Maskottchen, das den Weg zeigt</span></div></a></li>
   </ul>
 </section>
 
@@ -294,14 +312,21 @@ footer { margin-top: clamp(72px, 11vw, 128px); border-top: 1px solid var(--line)
   var v = document.querySelector('.hero-media');
   var calm = matchMedia('(prefers-reduced-motion: reduce)').matches ||
              (navigator.connection && navigator.connection.saveData);
-  if (calm) {
-    v.removeAttribute('autoplay');
-    v.querySelectorAll('source').forEach(function (s) { s.remove(); });
-    v.load();
-  } else if ('IntersectionObserver' in window) {
-    new IntersectionObserver(function (e) {
-      if (e[0].isIntersecting) { v.play().catch(function () {}); } else { v.pause(); }
-    }).observe(v);
+  // Das Video kommt erst nach dem Seitenaufbau; bis dahin steht das Poster.
+  function startVideo() {
+    v.src = matchMedia('(max-width: 760px)').matches ? 'assets/hero-mobile.mp4' : 'assets/hero.mp4';
+    v.preload = 'auto';
+    if ('IntersectionObserver' in window) {
+      new IntersectionObserver(function (e) {
+        if (e[0].isIntersecting) { v.play().catch(function () {}); } else { v.pause(); }
+      }).observe(v);
+    } else {
+      v.play().catch(function () {});
+    }
+  }
+  if (!calm) {
+    if (document.readyState === 'complete') { startVideo(); }
+    else { addEventListener('load', startVideo, { once: true }); }
   }
 
   document.querySelectorAll('.clip .frame').forEach(function (btn) {
